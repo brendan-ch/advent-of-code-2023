@@ -49,7 +49,6 @@ fn main() {
             }
         }
 
-        println!("{game_id} {possible}");
         if possible {
             sum += game_id;
         }
