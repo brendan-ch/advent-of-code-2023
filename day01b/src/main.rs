@@ -1,6 +1,13 @@
 use priority_queue::DoublePriorityQueue;
 use std::time::Instant;
 
+// Work around Rust priority queue shenanigans
+#[derive(PartialEq, Eq, Hash, Debug)]
+struct Element {
+    digit: usize,
+    priority: usize,
+}
+
 fn main() {
     let input = include_str!("../input.txt").to_owned() + "\n";
     let now = Instant::now();
@@ -12,19 +19,44 @@ fn main() {
     for line in input.lines() {
         // Priority queue where the value represents the digit to be added,
         // and the priority is the position in the given string
-        let mut pq: DoublePriorityQueue<usize, usize> = DoublePriorityQueue::new();
+        let mut pq: DoublePriorityQueue<Element, usize> = DoublePriorityQueue::new();
 
         for digit_index in 1..10 {
-            let index = line.find(digits[digit_index]);
-            if index.is_some() {
-                pq.push(digit_index, index.unwrap());
+            let indices = line.match_indices(digits[digit_index]);
+            // println!("{:?}", indices);
+            // indices.into_iter().last();
+            // We only care about the first and last indices
+            let mut iter = indices.into_iter();
+            let next = iter.next();
+
+            if next.is_some() {
+                println!("Pushing to priority queue");
+                pq.push(Element { digit: digit_index, priority: next.unwrap().0 }, next.unwrap().0);
+            }
+
+            let last = iter.last();
+            println!("{digit_index} {:?} {:?}", next, last);
+
+            if last.is_some() {
+                pq.push(Element { digit: digit_index, priority: last.unwrap().0 }, last.unwrap().0);
             }
         }
 
         for word_index in 1..10 {
-            let index = line.find(words[word_index]);
-            if index.is_some() {
-                pq.push(word_index, index.unwrap());
+            let indices = line.match_indices(words[word_index]);
+            // indices.into_iter().last();
+            // We only care about the first and last indices
+            let mut iter = indices.into_iter();
+            let next = iter.next();
+
+            if next.is_some() {
+                pq.push(Element { digit: word_index, priority: next.unwrap().0 }, next.unwrap().0);
+            }
+
+            let last = iter.last();
+
+            if last.is_some() {
+                pq.push(Element { digit: word_index, priority: last.unwrap().0 }, last.unwrap().0);
             }
         }
 
@@ -32,8 +64,8 @@ fn main() {
         // The min element is the first digit, the max element
         // is the last digit
         if pq.len() > 0 {
-            sum += pq.peek_min().unwrap().0 * 10;
-            sum += pq.peek_max().unwrap().0;
+            sum += pq.peek_min().unwrap().0.digit * 10;
+            sum += pq.peek_max().unwrap().0.digit;
         }
     }
 
