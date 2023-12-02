@@ -20,23 +20,21 @@ fn main() {
             let info_split_iter = set.split(", ").into_iter();
             for info in info_split_iter {
                 let collected: Vec<&str> = info.split(" ").collect();
+                let c = collected[0].parse::<i32>().unwrap();
                 match collected[1] {
                     "blue" => {
-                        let b_c = collected[0].parse::<i32>().unwrap();
-                        if b_c > b {
-                            b = b_c;
+                        if c > b {
+                            b = c;
                         }
                     }
                     "red" => {
-                        let r_c = collected[0].parse::<i32>().unwrap();
-                        if r_c > r {
-                            r = r_c;
+                        if c > r {
+                            r = c;
                         }
                     }
                     "green" => {
-                        let g_c = collected[0].parse::<i32>().unwrap();
-                        if g_c > g {
-                            g = g_c;
+                        if c > g {
+                            g = c;
                         }
                     }
                     _ => {}
