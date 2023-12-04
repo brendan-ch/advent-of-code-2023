@@ -23,19 +23,15 @@ fn main() {
 
         for digit_index in 1..10 {
             let indices = line.match_indices(digits[digit_index]);
-            // println!("{:?}", indices);
-            // indices.into_iter().last();
             // We only care about the first and last indices
             let mut iter = indices.into_iter();
             let next = iter.next();
 
             if next.is_some() {
-                println!("Pushing to priority queue");
                 pq.push(Element { digit: digit_index, priority: next.unwrap().0 }, next.unwrap().0);
             }
 
             let last = iter.last();
-            println!("{digit_index} {:?} {:?}", next, last);
 
             if last.is_some() {
                 pq.push(Element { digit: digit_index, priority: last.unwrap().0 }, last.unwrap().0);
@@ -44,7 +40,7 @@ fn main() {
 
         for word_index in 1..10 {
             let indices = line.match_indices(words[word_index]);
-            // indices.into_iter().last();
+            
             // We only care about the first and last indices
             let mut iter = indices.into_iter();
             let next = iter.next();
