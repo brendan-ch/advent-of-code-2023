@@ -27,5 +27,7 @@ This table tracks progress on solutions for released Advent of Code puzzles for 
 | `day02b`       | ✅ Completed      |       |
 | `day03a`       | ✅ Completed      | Requires Rust nightly.      |
 | `day03b`       | ✅ Completed      | Requires Rust nightly.      |
-| `day04a`       | ⏳ Waiting | |
-| `day04b`       | ⏳ Waiting | |
+| `day04a`       | ✅ Completed | |
+| `day04b`       | ✅ Completed | |
+| `day05a`       | ⏳ Waiting | |
+| `day05b`       | ⏳ Waiting | |
