@@ -17,7 +17,7 @@ You may also change the `input.txt` file within the directory to your puzzle inp
 
 ## Progress Tracker
 
-This table tracks progress on released Advent of Code puzzles for 2023.
+This table tracks progress on solutions for released Advent of Code puzzles for 2023.
 
 | Day and part # | Progress | Notes |
 | -------------- | -------- | ----- |
