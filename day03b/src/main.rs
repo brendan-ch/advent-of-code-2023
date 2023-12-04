@@ -3,6 +3,9 @@
 use std::time::Instant;
 use std::collections::HashSet;
 
+// Install nightly Rust using rustup: `rustup default nightly`
+// To switch back to stable: `rustup default stable`
+
 #[derive(Debug, PartialEq, Eq, Hash)]
 struct Number {
     start_column: i32,
@@ -25,7 +28,6 @@ fn main() {
     let mut sum = 0;
     let mut symbols: HashSet<Symbol> = HashSet::new();
     let mut numbers: HashSet<Number> = HashSet::new();
-    let mut extracted_numbers: HashSet<Number> = HashSet::new();
 
     let mut i = 0;
     for line in input.lines() {
@@ -64,7 +66,6 @@ fn main() {
     for symbol in &symbols {
         // Check if there's any numbers around the symbol
         // If there is, add it to the sum
-
         let extracted: Vec<Number> = numbers.extract_if(|x| ((x.start_column - symbol.column).abs() <= 1 || (x.end_column - symbol.column).abs() <= 1) && (x.row - symbol.row).abs() <= 1).collect();
 
         // If there are exactly 2 numbers adjacent, add the multiple
@@ -73,15 +74,6 @@ fn main() {
         }
     }
 
-    for num in extracted_numbers {
-        print!("{:?} ", num);
-    }
-    println!();
-
-    for num in numbers {
-        print!("{:?} ", num);
-    }
-    println!();
     println!("{:?}", sum);
 
     let elapsed = now.elapsed().as_micros();
