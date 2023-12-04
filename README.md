@@ -28,4 +28,4 @@ This table tracks progress on released Advent of Code puzzles for 2023.
 | `day03a`       | ✅ Completed      | Requires Rust nightly.      |
 | `day03b`       | ✅ Completed      | Requires Rust nightly.      |
 | `day04a`       | ⏳ Waiting | |
-| `day04a`       | ⏳ Waiting | |
+| `day04b`       | ⏳ Waiting | |
