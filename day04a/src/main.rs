@@ -16,9 +16,7 @@ fn main() {
                 winning_nums.insert(num.parse::<i32>().unwrap());
             }
         }
-        // println!("{:?}", winning_num);
         for num in card_iter.next().unwrap().split(' ') {
-            // print!("{num} ");
             if num != "" && winning_nums.contains(&num.parse::<i32>().unwrap()) {
                 if multiple == 0 {
                     multiple = 1;
@@ -29,7 +27,6 @@ fn main() {
         }
 
         sum += multiple;
-        // println!();
         winning_nums.clear();
     }
 
