@@ -9,7 +9,7 @@ cd [directory name]
 cargo run --release
 ```
 
-This will build and run an optimized version of the solution.
+This will build and run an optimized version of the solution, along with installing external dependencies.
 
 You may also change the `input.txt` file within the directory to your puzzle input. This file is included in source control as the Rust compiler expects an `input.txt` file at that location; not including one will cause the compilation to fail.
 
